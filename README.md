@@ -1,5 +1,5 @@
 # Model Context Protocol (MCP) Server for dify workflows
-Implementation of an MCP server for using [dify](https://github.com/langgenius/dify). It achieves the invocation of the Dify workflow by calling the tools of MCP.
+A simple implementation of an MCP server for using [dify](https://github.com/langgenius/dify). It achieves the invocation of the Dify workflow by calling the tools of MCP.
 ## 🔨Installation
 ### Prepare config.yaml
 Before using the mcp server, you should prepare a config.yaml to save your dify_base_url and dify_sks. The example config like this:
