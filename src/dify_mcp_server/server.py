@@ -168,6 +168,7 @@ class DifyAPI(ABC):
         response.raise_for_status()
         return response.json()
 
+
 config_path = os.getenv("CONFIG_PATH")
 server = Server("dify_mcp_server")
 dify_api = DifyAPI(config_path)
@@ -208,9 +209,6 @@ async def handle_list_tools() -> list[types.Tool]:
                 )
                 if param_info['required']:
                     inputSchema['required'].append(property_name)
-        else:
-            # TODO: if no params , return dict() may not work.
-            inputSchema = dict()
 
         tools.append(
             types.Tool(
@@ -226,8 +224,6 @@ async def handle_list_tools() -> list[types.Tool]:
 async def handle_call_tool(
     name: str, arguments: dict | None
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
-    if not arguments:
-        raise ValueError("Missing arguments")
     tool_names = dify_api.dify_app_names
     if name in tool_names:
         tool_idx = tool_names.index(name)
@@ -270,4 +266,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    # print(dify_api.dify_app_infos)
