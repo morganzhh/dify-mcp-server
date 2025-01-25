@@ -1,6 +1,16 @@
 # Model Context Protocol (MCP) Server for dify workflows
+[![smithery badge](https://smithery.ai/badge/dify-mcp-server)](https://smithery.ai/server/dify-mcp-server)
 A simple implementation of an MCP server for using [dify](https://github.com/langgenius/dify). It achieves the invocation of the Dify workflow by calling the tools of MCP.
 ## 🔨Installation
+
+### Installing via Smithery
+
+To install Dify MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/dify-mcp-server):
+
+```bash
+npx -y @smithery/cli install dify-mcp-server --client claude
+```
+
 ### Prepare config.yaml
 Before using the mcp server, you should prepare a config.yaml to save your dify_base_url and dify_sks. The example config like this:
 ```yaml
