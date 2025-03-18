@@ -36,6 +36,13 @@ class DifyAPI(ABC):
         self.dify_app_params = dify_app_params
         self.dify_app_metas = dify_app_metas
         self.dify_app_names = [x['name'] for x in dify_app_infos]
+                     
+    def map_param_type(self, param_type):
+        """
+        处理 Dify 参数类型的映射：
+        - "text-input" -> "string"
+        """
+        return "string" if param_type == "text-input" else param_type
 
     def chat_message(
             self,
@@ -204,7 +211,7 @@ async def handle_list_tools() -> list[types.Tool]:
                 param_info = param[param_type]
                 property_name = param_info['variable']
                 inputSchema["properties"][property_name] = dict(
-                    type=param_type,
+                    type=self.map_param_type(param_type),
                     description=param_info['label'],
                 )
                 if param_info['required']:
