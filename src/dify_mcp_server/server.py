@@ -211,7 +211,7 @@ async def handle_list_tools() -> list[types.Tool]:
                 param_info = param[param_type]
                 property_name = param_info['variable']
                 inputSchema["properties"][property_name] = dict(
-                    type=self.map_param_type(param_type),
+                    type=dify_api.map_param_type(param_type),
                     description=param_info['label'],
                 )
                 if param_info['required']:
